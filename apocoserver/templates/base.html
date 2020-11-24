@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{% block title %}{% endblock %} - Apocoserver</title>
+  <link rel="stylesheet" href="/static/lib/bootstrap/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="/static/css/base.css">
+
+  <script src="/static/lib/jquery-3.5.1.slim.min.js"></script>
+  <script src="/static/lib/bootstrap/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+</head>
+<body>
+  <div class="container">
+    <section class="content">
+      <div class="jumbotron">
+        <h1>
+          {% block header %}{% endblock %}
+        </h1>
+
+      </div>
+      {% for message in get_flashed_messages() %}
+      <div class="flash">{{ message }}</div>
+      {% endfor %}
+      {% block content %}{% endblock %}
+    </section>
+
+  </div>
+</body>
+</html>

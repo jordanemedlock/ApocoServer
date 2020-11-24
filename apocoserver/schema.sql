@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS resources;
+
+CREATE TABLE resources (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    url TEXT NOT NULL,
+    type TEXT NOT NULL,
+    status TEXT NOT NULL,
+    file_location TEXT,
+    notes TEXT,
+    extra_fields TEXT,
+    created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+)

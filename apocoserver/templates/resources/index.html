@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Resource List{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">
+                    Name
+                </th>
+                <th scope="col">
+                    URL
+                </th>
+                <th scope="col">
+                    Resource Type
+                </th>
+                <th scope="col">
+                    Status
+                </th>
+                <th scope="col">
+                    File Location
+                </th>
+                <th scope="col">
+                    Notes
+                </th>
+                <th scope="col">
+                </th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            {% for resource in resources %}
+            
+            <tr>
+                <td>
+                    {{resource.name}}
+                </td>
+                <td>
+                    {{resource.url}}
+                </td>
+                <td>
+                    {{resource.type}}
+                </td>
+                <td>
+                    {{resource.status}}
+                </td>
+                <td>
+                    {{resource.file_location}}
+                </td>
+                <td>
+                    {{resource.notes}}
+                </td>
+                <td>
+                    <a href="/resources/delete/{{resource.id}}">X</a>
+                </td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+        
+    </table>
+    
+</div>
+
+<h2>
+    Create new download request
+</h2>
+<div class="row">
+    <form action="/resources/index" method="POST">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="url">URL</label>
+            <input type="text" class="form-control" id="url" name="url">
+        </div>
+        <div class="form-group">
+            <label for="type">type</label>
+            <select id="type" name="type" class="form-control">
+                <option value="">Select One...</option>
+                <option value="YT_CHANNEL">Youtube Channel</option>
+                <option value="YT_VIDEO">Youtube Video</option>
+                <option value="SINGLE_FILE">Single file from URL</option>
+                <option value="WHOLE_SITE">Crawl a whole site</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="notes">Notes</label>
+            <input type="text" class="form-control" id="notes" name="notes">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Request</button>
+    </form>
+    
+</div>
+
+{% endblock %}
